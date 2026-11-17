@@ -8,7 +8,7 @@
   "observability": { "enabled": true },
   "workers_dev": false,
   "routes": [
-    { "pattern": "fidelium.cl/*", "zone_name": "fidelium.cl" },
-    { "pattern": "www.fidelium.cl/*", "zone_name": "fidelium.cl" }
+    { "pattern": "fidelium.cl", "custom_domain": true },
+    { "pattern": "www.fidelium.cl", "custom_domain": true }
   ]
 }
