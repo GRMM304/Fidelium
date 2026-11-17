@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ExperienciaPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Experiencia" title="Trayectoria que se transforma en" emphasis="criterio." lead="Diez años acompañando operaciones inmobiliarias y más de 200 casos conducidos con método, confidencialidad y visión integral." index="06" />
+      <InteriorHero kicker="Experiencia" title="Trayectoria que se transforma en" emphasis="criterio." lead="Diez años acompañando operaciones inmobiliarias y más de 200 casos conducidos con método, confidencialidad y visión integral." index="06" photo="/fotos/experiencia.jpg" photoAlt="Asesora de FIDELIUM conversando con un cliente" />
 
       <section className="experience-numbers section">
         <article><strong>10</strong><span>Años de experiencia</span><p>Conocimiento acumulado en operaciones, documentos, participantes y procesos inmobiliarios.</p></article>

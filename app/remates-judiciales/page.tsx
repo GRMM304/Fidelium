@@ -27,7 +27,7 @@ const faqs = [
 export default function RematesPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Remates judiciales" title="Estrategia antes de" emphasis="ofertar." lead="Analizamos la oportunidad, sus antecedentes y sus costos antes de tomar una decisión. Después, coordinamos cada etapa hasta el cierre." index="05" />
+      <InteriorHero kicker="Remates judiciales" title="Estrategia antes de" emphasis="ofertar." lead="Analizamos la oportunidad, sus antecedentes y sus costos antes de tomar una decisión. Después, coordinamos cada etapa hasta el cierre." index="05" photo="/fotos/remates.jpg" photoAlt="Asesora de FIDELIUM visitando una propiedad junto a un cliente" />
 
       <section className="auction-introduction section">
         <div><p className="kicker dark">Servicio llave en mano</p><h2>Una oportunidad solo es atractiva cuando sus riesgos son comprendidos.</h2></div>

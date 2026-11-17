@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ServiciosPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Servicios" title="Soluciones que integran" emphasis="análisis y gestión." lead="Acompañamos la operación completa o una etapa específica, con alcances y valores transparentes." index="03" />
+      <InteriorHero kicker="Servicios" title="Soluciones que integran" emphasis="análisis y gestión." lead="Acompañamos la operación completa o una etapa específica, con alcances y valores transparentes." index="03" photo="/fotos/servicios.jpg" photoAlt="Asesora de FIDELIUM revisando planos con un cliente" />
 
       <section className="services-overview section">
         <p className="kicker dark">Áreas de servicio</p>

@@ -56,7 +56,7 @@ const faqs = [
 export default function CompraventaPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Compraventa protegida" title="Cada firma debe responder a una" emphasis="operación bien planificada." lead="Coordinamos los aspectos jurídicos, documentales, notariales y registrales necesarios para conducir la compraventa con claridad." index="04" />
+      <InteriorHero kicker="Compraventa protegida" title="Cada firma debe responder a una" emphasis="operación bien planificada." lead="Coordinamos los aspectos jurídicos, documentales, notariales y registrales necesarios para conducir la compraventa con claridad." index="04" photo="/fotos/compraventa.jpg" photoAlt="Pareja recibe las llaves de su departamento acompañada por FIDELIUM" />
 
       <section className="pricing-section section">
         <div className="pricing-intro">

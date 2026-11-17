@@ -430,3 +430,22 @@ footer { padding: 70px 8vw 32px; background: #17050a; color: rgba(244, 239, 231,
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ---- Fotografías en cabeceras ---- */
+.hero-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 42vw; z-index: 0; pointer-events: none; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #22070d 0%, rgba(42, 9, 16, .62) 18%, rgba(42, 9, 16, 0) 52%), linear-gradient(180deg, rgba(33, 7, 12, .55) 0%, rgba(33, 7, 12, 0) 22%, rgba(33, 7, 12, 0) 78%, rgba(33, 7, 12, .45) 100%); }
+.hero.has-photo .hero-monogram { display: none; }
+.hero.has-photo .hero-content { width: min(100%, 52vw); }
+.hero.has-photo h1 { font-size: clamp(44px, 4.3vw, 70px); }
+.interior-hero.has-photo > div:not(.hero-photo) { width: min(100%, 50vw); }
+.interior-hero.has-photo h1 { font-size: clamp(40px, 4.1vw, 62px); }
+.interior-hero > .hero-photo { position: absolute; width: 40vw; }
+
+@media (max-width: 900px) {
+  .hero-photo, .interior-hero > .hero-photo { width: 100%; }
+  .hero-photo::after { background: linear-gradient(180deg, rgba(33, 7, 12, .9) 0%, rgba(42, 9, 16, .8) 55%, rgba(33, 7, 12, .92) 100%); }
+  .hero.has-photo .hero-content, .interior-hero.has-photo > div:not(.hero-photo) { width: 100%; }
+  .hero.has-photo h1 { font-size: clamp(43px, 9vw, 60px); }
+  .interior-hero.has-photo h1 { font-size: clamp(42px, 9vw, 57px); }
+}

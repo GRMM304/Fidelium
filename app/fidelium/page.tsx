@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function FideliumPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Quiénes somos" title="Criterio jurídico para" emphasis="decisiones inmobiliarias." lead="Un equipo multidisciplinario que integra análisis, planificación y gestión para conducir operaciones complejas con mayor claridad." index="02" />
+      <InteriorHero kicker="Quiénes somos" title="Criterio jurídico para" emphasis="decisiones inmobiliarias." lead="Un equipo multidisciplinario que integra análisis, planificación y gestión para conducir operaciones complejas con mayor claridad." index="02" photo="/fotos/fidelium.jpg" photoAlt="Reunión de asesoría en oficina de FIDELIUM con vista a la cordillera" />
 
       <section className="editorial-split section">
         <div>

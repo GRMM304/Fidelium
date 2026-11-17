@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Contacto" title="Cuéntanos qué necesitas" emphasis="resolver." lead="Una primera revisión nos permitirá comprender la operación, definir el alcance y explicarte cómo avanzar." index="07" />
+      <InteriorHero kicker="Contacto" title="Cuéntanos qué necesitas" emphasis="resolver." lead="Una primera revisión nos permitirá comprender la operación, definir el alcance y explicarte cómo avanzar." index="07" photo="/fotos/contacto.jpg" photoAlt="Reunión de evaluación inicial en FIDELIUM" />
 
       <section className="contact-page section">
         <div className="contact-page-info">

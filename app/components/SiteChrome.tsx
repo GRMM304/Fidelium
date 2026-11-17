@@ -131,9 +131,10 @@ export function PageShell({ children, overlayHeader = false }: { children: React
   );
 }
 
-export function InteriorHero({ kicker, title, emphasis, lead, index }: { kicker: string; title: string; emphasis?: string; lead: string; index: string }) {
+export function InteriorHero({ kicker, title, emphasis, lead, index, photo, photoAlt = "" }: { kicker: string; title: string; emphasis?: string; lead: string; index: string; photo?: string; photoAlt?: string }) {
   return (
-    <section className="interior-hero" id="inicio">
+    <section className={`interior-hero${photo ? " has-photo" : ""}`} id="inicio">
+      {photo && <div className="hero-photo"><img src={photo} alt={photoAlt} /></div>}
       <div>
         <p className="kicker">{kicker}</p>
         <h1>{title}{emphasis && <> <em>{emphasis}</em></>}</h1>

@@ -11,14 +11,15 @@ const process = [
 export default function Home() {
   return (
     <PageShell overlayHeader>
-      <section className="hero" id="inicio">
+      <section className="hero has-photo" id="inicio">
+        <div className="hero-photo"><img src="/fotos/inicio.jpg" alt="Asesora de FIDELIUM en reunión con un cliente, con vista a Santiago" fetchPriority="high" /></div>
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-monogram" aria-hidden="true">
           <Image src="/brand/fidelium-mark-gold.png" alt="" width={434} height={512} priority />
         </div>
         <div className="hero-content">
           <p className="kicker">Eficiencia · Planificación · Resguardo</p>
-          <h1>Decisiones inmobiliarias,<br /><em>jurídicamente resguardadas.</em></h1>
+          <h1>Decisiones inmobiliarias,<br />{" "}<em>jurídicamente resguardadas.</em></h1>
           <p className="hero-lead">Planificación legal y gestión estratégica para compraventas, financiamientos y remates judiciales.</p>
           <div className="hero-actions">
             <a href="/contacto" className="button button-gold">Solicitar evaluación <ArrowIcon /></a>
