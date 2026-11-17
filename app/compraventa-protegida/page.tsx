@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { CheckIcon, EvaluationCTA, InteriorHero, PageShell } from "../components/SiteChrome";
+import { ServiceButton } from "../components/Cotizador";
+import { CtaBand, PageShell } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "Compraventa protegida | FIDELIUM",
@@ -56,47 +57,51 @@ const faqs = [
 export default function CompraventaPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Compraventa protegida" title="Cada firma debe responder a una" emphasis="operación bien planificada." lead="Coordinamos los aspectos jurídicos, documentales, notariales y registrales necesarios para conducir la compraventa con claridad." index="04" photo="/fotos/compraventa.jpg" photoAlt="Pareja recibe las llaves de su departamento acompañada por FIDELIUM" />
-
-      <section className="pricing-section section">
-        <div className="pricing-intro">
-          <p className="kicker dark">Planes y valores</p>
-          <h2>Elige el acompañamiento que necesita tu operación.</h2>
-          <p>Todos los valores están expresados en UF. Antes de contratar revisaremos los antecedentes para confirmar el alcance aplicable.</p>
-        </div>
-        <div className="pricing-grid">
-          {plans.map((plan) => (
-            <article className={`pricing-card${plan.featured ? " featured-plan" : ""}`} key={plan.name}>
-              <div className="plan-head">
-                <p>{plan.name}</p><strong>{plan.price}</strong>
-              </div>
-              <p className="plan-description">{plan.description}</p>
-              <p className="plan-label">Incluye</p>
-              <ul className="included-list">{plan.items.map(item => <li key={item}><CheckIcon />{item}</li>)}</ul>
-              <div className="excluded-box">
-                <p>No incluye</p>
-                <ul>{plan.excluded.map(item => <li key={item}>{item}</li>)}</ul>
-              </div>
-              <a href="/contacto" className={`button ${plan.featured ? "button-gold" : "button-burgundy"}`}>Solicitar evaluación</a>
-            </article>
-          ))}
+      <section className="hero hero-simple" style={{ ["--hero-img" as string]: "url('/fotos/hero-compraventa.jpg')" }}>
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <span className="eyebrow dark">Compraventa protegida</span>
+            <h1>Cada firma debe responder a una <em>operación bien planificada</em></h1>
+            <p>Coordinamos los aspectos jurídicos, documentales, notariales y registrales necesarios para conducir tu compraventa con claridad.</p>
+            <div className="actions">
+              <ServiceButton servicio="compraventa-con" className="btn btn-primary">Cotizar mi compraventa</ServiceButton>
+              <a className="btn btn-secondary" href="/#contacto">Hablar con el equipo</a>
+            </div>
+            <div className="badges"><span className="badge">Desde 10 UF</span><span className="badge">Hasta la inscripción</span><span className="badge">Con o sin crédito</span></div>
+          </div>
         </div>
       </section>
 
-      <section className="additional-service section">
-        <div><span>Servicio adicional</span><h2>Estudio de títulos</h2></div>
-        <strong>2 UF</strong>
-        <p>Aplicable cuando el plan contratado no lo incluye. Su alcance se confirma según los antecedentes de la propiedad.</p>
-      </section>
-
-      <section className="faq-section section">
-        <div><p className="kicker dark">Preguntas frecuentes</p><h2>Antes de comenzar.</h2></div>
-        <div className="faq-list">
-          {faqs.map(([q, a], index) => <details key={q}><summary><span>0{index + 1}</span>{q}</summary><p>{a}</p></details>)}
+      <section className="section">
+        <div className="container">
+          <div className="title"><span className="eyebrow">Planes y valores</span><h2>Elige el acompañamiento <em>que necesita tu operación</em></h2><p className="lead">Valores en UF. Antes de contratar revisamos los antecedentes para confirmar el alcance aplicable.</p></div>
+          <div className="grid-2">
+            {plans.map((plan) => (
+              <article className={`card service-card${plan.featured ? " featured" : ""}`} key={plan.name}>
+                <span className="eyebrow">{plan.name}</span>
+                <div className="price">{plan.price}</div>
+                <p>{plan.description}</p>
+                <ul className="plan-list">{plan.items.map((item) => <li key={item}>{item}</li>)}</ul>
+                <div className="excluded"><strong>No incluye:</strong> {plan.excluded.join(" · ")}</div>
+                <div className="card-actions"><ServiceButton servicio={plan.featured ? "compraventa-sin" : "compraventa-con"} className="btn btn-primary">Cotizar este plan</ServiceButton></div>
+              </article>
+            ))}
+          </div>
+          <div className="note-bar">
+            <p><strong>Estudio de títulos · 2 UF.</strong> Servicio adicional cuando el plan contratado no lo incluye.</p>
+            <a className="btn btn-outline" href="/#cotizador">Ir al cotizador</a>
+          </div>
         </div>
       </section>
 
-      <EvaluationCTA title="Protege tu próxima compraventa desde el inicio." />
+      <section className="section section-soft">
+        <div className="container">
+          <div className="title"><span className="eyebrow">Preguntas frecuentes</span><h2>Antes de <em>comenzar</em></h2></div>
+          <div className="faq">{faqs.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}</div>
+        </div>
+      </section>
+
+      <CtaBand title="Protege tu próxima compraventa desde el inicio" />
     </PageShell>
   );
 }

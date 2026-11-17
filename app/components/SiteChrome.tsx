@@ -1,161 +1,122 @@
-import Image from "next/image";
-import Link from "next/link";
+import { MobileMenuToggle } from "./MobileMenuToggle";
 
 export const contactEmail = "contacto@fidelium.cl";
 export const instagramUrl = "https://www.instagram.com/fidelium.cl";
 
 export const navItems = [
-  ["Inicio", "/"],
-  ["FIDELIUM", "/fidelium"],
-  ["Servicios", "/servicios"],
-  ["Compraventa protegida", "/compraventa-protegida"],
-  ["Remates judiciales", "/remates-judiciales"],
-  ["Experiencia", "/experiencia"],
-  ["Contacto", "/contacto"],
+  ["Inicio", "/#inicio"],
+  ["FIDELIUM", "/#fidelium"],
+  ["Servicios", "/#servicios"],
+  ["Cotizador", "/#cotizador"],
+  ["Contacto", "/#contacto"],
 ] as const;
-
-export function ArrowIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="arrow-icon">
-      <path d="M5 12h13M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-export function CheckIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="check-icon">
-      <path d="m5 12 4 4L19 6" />
-    </svg>
-  );
-}
 
 function InstagramIcon() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="instagram-icon">
+    <svg aria-hidden="true" viewBox="0 0 24 24">
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4.1" />
-      <circle cx="17.4" cy="6.7" r=".8" className="instagram-dot" />
+      <circle cx="17.4" cy="6.7" r=".6" />
     </svg>
   );
 }
 
-export function Header({ overlay = false }: { overlay?: boolean }) {
+function MailIcon() {
   return (
-    <header className={`site-header${overlay ? " header-overlay" : " header-solid"}`}>
-      <Link href="/" className="brand" aria-label="FIDELIUM, volver al inicio">
-        <Image src="/brand/fidelium-horizontal-gold.png" alt="FIDELIUM" width={1400} height={351} priority />
-      </Link>
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
 
-      <nav className="desktop-nav" aria-label="Navegación principal">
-        {navItems.slice(1, 6).map(([label, href]) => <a href={href} key={href}>{label}</a>)}
-      </nav>
-
-      <div className="header-actions">
-        <a className="instagram-nav" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram de FIDELIUM">
-          <InstagramIcon /><span>Instagram</span>
+export function Header() {
+  return (
+    <header className="header">
+      <div className="container nav">
+        <a href="/#inicio" className="logo" aria-label="FIDELIUM, volver al inicio">
+          <img src="/brand/fidelium-horizontal-gold.png" alt="FIDELIUM" width={1400} height={351} />
         </a>
-        <a className="header-cta" href="/contacto">
-          Solicitar evaluación <ArrowIcon />
-        </a>
-      </div>
-
-      <details className="mobile-menu">
-        <summary aria-label="Abrir menú"><span /><span /></summary>
-        <nav aria-label="Navegación móvil">
+        <nav className="menu" id="menu" aria-label="Principal">
           {navItems.map(([label, href]) => <a href={href} key={href}>{label}</a>)}
-          <a href={instagramUrl} target="_blank" rel="noreferrer">Instagram ↗</a>
         </nav>
-      </details>
+        <div className="nav-actions">
+          <a className="btn btn-outline" href="/#cotizador">Cotizar</a>
+          <a className="btn btn-primary" href="/#contacto">Solicitar evaluación</a>
+        </div>
+        <MobileMenuToggle />
+      </div>
     </header>
   );
 }
 
 export function Footer() {
   return (
-    <footer>
-      <div className="footer-main">
-        <Link href="/" aria-label="FIDELIUM, volver al inicio">
-          <Image src="/brand/fidelium-horizontal-white.png" alt="FIDELIUM" width={1400} height={351} />
-        </Link>
-        <div className="footer-nav-wrap">
-          <p className="footer-label">Navegación</p>
-          <div className="footer-links">
-            {navItems.map(([label, href]) => <a href={href} key={href}>{label}</a>)}
-            <a href={instagramUrl} target="_blank" rel="noreferrer">Instagram ↗</a>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <a href="/#inicio" aria-label="FIDELIUM"><img className="footer-logo" src="/brand/fidelium-horizontal-white.png" alt="FIDELIUM" width={1400} height={351} /></a>
+            <p>Planificación legal y gestión estratégica para compraventas, financiamientos y remates judiciales en todo Chile.</p>
+          </div>
+          <div>
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="/#fidelium">FIDELIUM</a></li>
+              <li><a href="/compraventa-protegida">Compraventa protegida</a></li>
+              <li><a href="/remates-judiciales">Remates judiciales</a></li>
+              <li><a href="/#cotizador">Cotizador de honorarios</a></li>
+              <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <ul>
+              <li><a href={`mailto:${contactEmail}`}>{contactEmail}</a></li>
+              <li>Los Militares 5890, Las Condes, Santiago</li>
+              <li>Lunes a viernes, 09:00 a 17:00 horas</li>
+              <li><a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram @fidelium.cl</a></li>
+            </ul>
           </div>
         </div>
-        <div className="footer-contact">
-          <p className="footer-label">Contacto</p>
-          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-          <a className="footer-instagram" href={instagramUrl} target="_blank" rel="noreferrer"><InstagramIcon />@fidelium.cl</a>
-          <p>Los Militares 5890<br />Las Condes, Santiago</p>
-          <p>Lunes a viernes<br />09:00 a 17:00 horas</p>
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} FIDELIUM</span>
-        <span>Eficiencia · Planificación · Resguardo</span>
-        <a href="#inicio">Volver arriba ↑</a>
+        <p className="disclaimer">La información de este sitio es referencial. Los valores corresponden a honorarios profesionales expresados en UF y no incluyen gastos notariales, derechos del Conservador de Bienes Raíces, impuestos ni desembolsos de terceros. Los servicios de FIDELIUM constituyen obligaciones de medio; el alcance y los honorarios definitivos se confirman tras revisar los antecedentes de cada caso. © {new Date().getFullYear()} FIDELIUM · Eficiencia · Planificación · Resguardo.</p>
       </div>
     </footer>
   );
 }
 
-function WhatsAppIcon() {
+export function FloatSocial() {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 4.5A11.4 11.4 0 0 0 6.2 21.8L4.7 27.4l5.8-1.5A11.4 11.4 0 1 0 16 4.5Z" />
-      <path d="M12.1 10.2c-.3-.7-.6-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.2s1.4 3.7 1.6 4c.2.2 2.7 4.3 6.7 5.8 3.3 1.3 4 .9 4.7.8.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5l-2.7-1.3c-.4-.2-.8-.3-1.1.2-.3.5-1.1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1.4-3.1Z" />
-    </svg>
+    <div className="float-social">
+      <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram de FIDELIUM"><InstagramIcon /></a>
+      <a href={`mailto:${contactEmail}`} aria-label="Escribir a FIDELIUM"><MailIcon /></a>
+    </div>
   );
 }
 
-export function WhatsAppFloat() {
-  return (
-    <a className="whatsapp-float" href="/contacto?canal=whatsapp#formulario" aria-label="Solicitar evaluación por WhatsApp" title="WhatsApp — número por confirmar">
-      <WhatsAppIcon />
-      <span>WhatsApp</span>
-    </a>
-  );
-}
-
-export function PageShell({ children, overlayHeader = false }: { children: React.ReactNode; overlayHeader?: boolean }) {
+export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Header overlay={overlayHeader} />
+      <Header />
       <main>{children}</main>
       <Footer />
-      <WhatsAppFloat />
+      <FloatSocial />
     </>
   );
 }
 
-export function InteriorHero({ kicker, title, emphasis, lead, index, photo, photoAlt = "" }: { kicker: string; title: string; emphasis?: string; lead: string; index: string; photo?: string; photoAlt?: string }) {
+export function CtaBand({ title = "Da el siguiente paso con tu operación resguardada", text = "Cotiza tus honorarios y conversa con nuestro equipo para definir el acompañamiento que tu operación necesita." }: { title?: string; text?: string }) {
   return (
-    <section className={`interior-hero${photo ? " has-photo" : ""}`} id="inicio">
-      {photo && <div className="hero-photo"><img src={photo} alt={photoAlt} /></div>}
-      <div>
-        <p className="kicker">{kicker}</p>
-        <h1>{title}{emphasis && <> <em>{emphasis}</em></>}</h1>
-        <p>{lead}</p>
-      </div>
-      <span aria-hidden="true">{index} / FIDELIUM</span>
-    </section>
-  );
-}
-
-export function EvaluationCTA({ title = "Revisemos tu operación." }: { title?: string }) {
-  return (
-    <section className="evaluation-cta section">
-      <div>
-        <p className="kicker">Siguiente paso</p>
-        <h2>{title}</h2>
-      </div>
-      <div>
-        <p>Cuéntanos los antecedentes principales. Evaluaremos el alcance del servicio y te indicaremos cómo avanzar.</p>
-        <a href="/contacto" className="button button-gold">Solicitar evaluación <ArrowIcon /></a>
-      </div>
-    </section>
+    <>
+      <div className="brand-line" />
+      <section className="section cta-band">
+        <div className="container">
+          <h2>{title}</h2>
+          <p>{text}</p>
+          <a className="btn btn-primary" href="/#cotizador">Cotizar honorarios</a>
+          <a className="btn btn-secondary" href="/#contacto">Hablar con el equipo</a>
+        </div>
+      </section>
+    </>
   );
 }

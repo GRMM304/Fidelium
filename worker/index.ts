@@ -14,6 +14,11 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    // Páginas antiguas fusionadas en la portada (secciones con ancla).
+    const fusionadas: Record<string, string> = { "/fidelium": "fidelium", "/servicios": "servicios", "/experiencia": "experiencia", "/contacto": "contacto" };
+    const ancla = fusionadas[url.pathname.replace(/\/$/, "")];
+    if (ancla) return Response.redirect(`${url.origin}/#${ancla}`, 301);
+
     // next/image points at /_vinext/image. Image transformations are not enabled
     // on this Cloudflare account, so serve the original static file instead.
     if (url.pathname === "/_vinext/image") {

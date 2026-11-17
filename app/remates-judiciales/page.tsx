@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { EvaluationCTA, InteriorHero, PageShell } from "../components/SiteChrome";
+import { ServiceButton } from "../components/Cotizador";
+import { CtaBand, PageShell } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "Remates judiciales | FIDELIUM",
@@ -24,42 +25,58 @@ const faqs = [
   ["¿Qué tipo de propiedades analizan?", "Principalmente casas, departamentos y propiedades ofrecidas en remates judiciales."],
 ];
 
+const proceso = [
+  ["01", "Buscar", "Definimos criterios e identificamos propiedades que respondan a tu objetivo."],
+  ["02", "Evaluar", "Revisamos antecedentes jurídicos, valor comercial, costos y escenarios."],
+  ["03", "Participar", "Preparamos la estrategia y coordinamos la participación en la subasta."],
+  ["04", "Concluir", "Gestionamos adjudicación, formalización y, cuando corresponde, entrega material."],
+];
+
 export default function RematesPage() {
   return (
     <PageShell>
-      <InteriorHero kicker="Remates judiciales" title="Estrategia antes de" emphasis="ofertar." lead="Analizamos la oportunidad, sus antecedentes y sus costos antes de tomar una decisión. Después, coordinamos cada etapa hasta el cierre." index="05" photo="/fotos/remates.jpg" photoAlt="Asesora de FIDELIUM visitando una propiedad junto a un cliente" />
-
-      <section className="auction-introduction section">
-        <div><p className="kicker dark">Servicio llave en mano</p><h2>Una oportunidad solo es atractiva cuando sus riesgos son comprendidos.</h2></div>
-        <div><p>Nuestro acompañamiento integra búsqueda, estudio jurídico, evaluación comercial, estrategia de subasta y gestión posterior al remate.</p><p>El cliente puede contratar el proceso completo o las etapas que correspondan según su necesidad.</p></div>
-      </section>
-
-      <section className="auction-prices section">
-        <div className="auction-prices-heading"><p className="kicker">Etapas y valores</p><h2>Costos transparentes para cada fase.</h2></div>
-        <div className="price-rows">
-          {prices.map(([number, name, price, text]) => (
-            <article key={number}><span>{number}</span><div><h3>{name}</h3><p>{text}</p></div><strong>{price}</strong></article>
-          ))}
-        </div>
-        <p className="pricing-disclaimer">Los valores corresponden a honorarios profesionales y no incluyen gastos, derechos, impuestos, garantías de seriedad, publicaciones, actuaciones judiciales o desembolsos de terceros que puedan resultar aplicables.</p>
-      </section>
-
-      <section className="auction-process section">
-        <div><p className="kicker dark">Proceso</p><h2>De la oportunidad al cierre.</h2></div>
-        <div className="scope-steps four-steps">
-          <article><span>01</span><h3>Buscar</h3><p>Definimos criterios e identificamos propiedades que puedan responder al objetivo.</p></article>
-          <article><span>02</span><h3>Evaluar</h3><p>Revisamos antecedentes jurídicos, valor comercial, costos y escenarios.</p></article>
-          <article><span>03</span><h3>Participar</h3><p>Preparamos la estrategia y coordinamos la participación en la subasta.</p></article>
-          <article><span>04</span><h3>Concluir</h3><p>Gestionamos adjudicación, formalización y, cuando corresponda, entrega material.</p></article>
+      <section className="hero hero-simple" style={{ ["--hero-img" as string]: "url('/fotos/hero-remates.jpg')" }}>
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <span className="eyebrow dark">Remates judiciales</span>
+            <h1>Estrategia antes de <em>ofertar</em></h1>
+            <p>Analizamos la oportunidad, sus antecedentes y sus costos antes de que tomes una decisión. Después, coordinamos cada etapa hasta el cierre.</p>
+            <div className="actions">
+              <ServiceButton servicio="remates" className="btn btn-primary">Cotizar por etapas</ServiceButton>
+              <a className="btn btn-secondary" href="/#contacto">Hablar con el equipo</a>
+            </div>
+            <div className="badges"><span className="badge">Servicio llave en mano</span><span className="badge">Etapas independientes</span><span className="badge">Todo Chile</span></div>
+          </div>
         </div>
       </section>
 
-      <section className="faq-section section">
-        <div><p className="kicker dark">Preguntas frecuentes</p><h2>Información antes de participar.</h2></div>
-        <div className="faq-list">{faqs.map(([q, a], index) => <details key={q}><summary><span>0{index + 1}</span>{q}</summary><p>{a}</p></details>)}</div>
+      <section className="section">
+        <div className="container">
+          <div className="title"><span className="eyebrow">Etapas y valores</span><h2>Costos transparentes <em>para cada fase</em></h2><p className="lead">Una oportunidad solo es atractiva cuando sus riesgos son comprendidos. Contrata el proceso completo o solo las etapas que necesites.</p></div>
+          <div className="price-rows">
+            {prices.map(([number, name, price, text]) => (
+              <article className="price-row" key={number}><span>{number}</span><div><h3>{name}</h3><p>{text}</p></div><strong>{price}</strong></article>
+            ))}
+          </div>
+          <p className="disclaimer-box">Los valores corresponden a honorarios profesionales y no incluyen gastos, derechos, impuestos, garantías de seriedad, publicaciones, actuaciones judiciales o desembolsos de terceros que puedan resultar aplicables.</p>
+        </div>
       </section>
 
-      <EvaluationCTA title="Evalúa la oportunidad antes de ofertar." />
+      <section className="section section-soft">
+        <div className="container">
+          <div className="title"><span className="eyebrow">Proceso</span><h2>De la oportunidad <em>al cierre</em></h2></div>
+          <div className="process">{proceso.map(([n, t, p]) => <article className="card" key={n}><span>{n}</span><h3>{t}</h3><p>{p}</p></article>)}</div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="title"><span className="eyebrow">Preguntas frecuentes</span><h2>Información <em>antes de participar</em></h2></div>
+          <div className="faq">{faqs.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}</div>
+        </div>
+      </section>
+
+      <CtaBand title="Evalúa la oportunidad antes de ofertar" />
     </PageShell>
   );
 }
