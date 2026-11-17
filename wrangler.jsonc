@@ -4,6 +4,11 @@
   "main": "./worker/index.ts",
   "compatibility_date": "2026-05-15",
   "compatibility_flags": ["nodejs_compat"],
-  "images": { "binding": "IMAGES" },
-  "observability": { "enabled": true }
+  "assets": { "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "fidelium.cl/*", "zone_name": "fidelium.cl" },
+    { "pattern": "www.fidelium.cl/*", "zone_name": "fidelium.cl" }
+  ]
 }
